@@ -2,7 +2,7 @@
 INSERT INTO `series`(`name`, `specialization`, `year_of_study`) VALUES ('A', 'CTI', 4);
 INSERT INTO `series`(`name`, `specialization`, `year_of_study`) VALUES ('B', 'MON', 4);
 
--- group
+-- grup
 INSERT INTO `grup`(`domain`, `name`, `series_id`) VALUES ('CTI',444,1);
 INSERT INTO `grup`(`domain`, `name`, `series_id`) VALUES ('CTI',443,1);
 INSERT INTO `grup`(`domain`, `name`, `series_id`) VALUES ('ETTI',444,2);
