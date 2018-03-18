@@ -9,7 +9,6 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
-@EnableSwagger2
 public class GradingApp extends SpringBootServletInitializer {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(GradingApp.class);

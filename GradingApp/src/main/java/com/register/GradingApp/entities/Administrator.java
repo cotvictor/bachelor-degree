@@ -25,7 +25,7 @@ public class Administrator implements Serializable{
     private Scope scope;
 
     @JsonIgnore
-    @OneToOne(mappedBy = "employer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "administrator", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Credentials user;
 
     public Administrator(){

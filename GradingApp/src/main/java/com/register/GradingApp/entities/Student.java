@@ -42,9 +42,9 @@ public class Student implements Serializable{
     @JsonIgnore
     @OneToOne(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Credentials credentials;
-
-    @ManyToMany(mappedBy = "students")
-    private Set<Course> courses = new HashSet<>();
+//
+//    @ManyToMany(mappedBy = "students")
+//    private Set<Course> courses = new HashSet<>();
 
     @JsonIgnore
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -55,7 +55,7 @@ public class Student implements Serializable{
     }
 
     public Student(String firstName, String lastName, String email, Scope scope, boolean scholarship,
-                   String phoneNo, Grup grup, Credentials credentials, Set<Course> courses, Set<StudentCourse> studentCourses) {
+                   String phoneNo, Grup grup, Credentials credentials /*,Set<Course> courses*/, Set<StudentCourse> studentCourses) {
         this.firstName = firstName;
         this.studentCourses = studentCourses;
         this.lastName = lastName;
@@ -65,7 +65,7 @@ public class Student implements Serializable{
         this.phoneNo = phoneNo;
         this.grup = grup;
         this.credentials = credentials;
-        this.courses = courses;
+//        this.courses = courses;
     }
 
     public String getPhoneNo() {
@@ -147,14 +147,14 @@ public class Student implements Serializable{
     public void setScholarship(boolean scholarship) {
         this.scholarship = scholarship;
     }
-
-    public Set<Course> getCourses() {
-        return courses;
-    }
-
-    public void setCourses(Set<Course> courses) {
-        this.courses = courses;
-    }
+//
+//    public Set<Course> getCourses() {
+//        return courses;
+//    }
+//
+//    public void setCourses(Set<Course> courses) {
+//        this.courses = courses;
+//    }
 
     @Override
     public String toString() {
@@ -168,7 +168,7 @@ public class Student implements Serializable{
                 ", phoneNo='" + phoneNo + '\'' +
                 ", group=" + grup +
                 ", user=" + credentials +
-                ", courses=" + courses +
+//                ", courses=" + courses +
                 '}';
     }
 }
