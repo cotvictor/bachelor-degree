@@ -31,7 +31,7 @@ public class StudentController {
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public List<Student> listAllCredentials(){
+    public List<Student> listAllStudents(){
 
         return studentService.getAllStudents();
     }

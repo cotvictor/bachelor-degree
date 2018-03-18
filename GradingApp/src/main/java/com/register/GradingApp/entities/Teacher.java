@@ -43,6 +43,10 @@ public class Teacher implements Serializable {
     @ManyToMany(mappedBy = "teachers")
     private Set<Course> courses = new HashSet<>();
 
+    public Teacher () {
+
+    }
+
     public Teacher(String firstName, String lastName, Scope scope, String email,
                    String phoneNo, Credentials credentials, Set<Course> courses /*,Set<TeacherCourse> teacherCourses*/) {
         this.firstName = firstName;
