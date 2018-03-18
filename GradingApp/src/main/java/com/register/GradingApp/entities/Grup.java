@@ -82,7 +82,7 @@ public class Grup implements Serializable{
 
     @Override
     public String toString() {
-        return "Group{" +
+        return "Grup{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", domain='" + domain + '\'' +
