@@ -23,7 +23,7 @@ public class Course {
     private String description;
 
     @Column(name = "year_of_study")
-    private String yearOfStudy;
+    private int yearOfStudy;
 //
 //    @ManyToMany(cascade = { CascadeType.ALL })
 //    @JoinTable(
@@ -66,7 +66,7 @@ public class Course {
 
     }
 
-    public Course(String title, String description, String yearOfStudy, /*Set<Student> students,*/
+    public Course(String title, String description, int yearOfStudy, /*Set<Student> students,*/
                   Set<Teacher> teachers, Set<StudentCourse> studentCourses, Set<SeriesCourse> seriesCourses /*, Set<TeacherCourse> teacherCourses*/) {
         this.title = title;
 //        this.teacherCourses = teacherCourses;
@@ -102,11 +102,11 @@ public class Course {
         this.description = description;
     }
 
-    public String getYearOfStudy() {
+    public int getYearOfStudy() {
         return yearOfStudy;
     }
 
-    public void setYearOfStudy(String yearOfStudy) {
+    public void setYearOfStudy(int yearOfStudy) {
         this.yearOfStudy = yearOfStudy;
     }
 //
