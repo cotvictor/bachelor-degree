@@ -1,5 +1,6 @@
 package com.register.GradingApp.controller;
 import com.register.GradingApp.entities.Grup;
+import com.register.GradingApp.entities.Series;
 import com.register.GradingApp.repository.GrupRepository;
 import com.register.GradingApp.service.GrupService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
+import java.util.Set;
 
 @Controller
 @RequestMapping(value = "/api/groups")
@@ -31,5 +33,14 @@ public class GroupController {
     public List<Grup> listAllGrups(){
 
         return grupService.getAllGrups();
+    }
+
+    @RequestMapping(value = "/bySeries",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public Set<Grup> listAllGrupsBySeries(Series series){
+
+        return grupService.getAllGroupsBySeries(series);
     }
 }
