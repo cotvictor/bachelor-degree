@@ -1,7 +1,6 @@
 package com.register.GradingApp.controller;
 
-import com.register.GradingApp.entities.Grup;
-import com.register.GradingApp.entities.Student;
+import com.register.GradingApp.entities.*;
 import com.register.GradingApp.repository.StudentRepository;
 import com.register.GradingApp.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,4 +35,22 @@ public class StudentController {
         return studentService.getAllStudents();
     }
 
+    @RequestMapping(value = "/getByFnAndLn",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public Student getStudentByFirstNameAndLastName(String firstName, String lastName){
+
+        return studentService.getStudentByFirstNameAndLastName(firstName, lastName);
+    }
+
+    @RequestMapping(value = "/saveStudent",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public void saveStudnet(String firstName, String lastName, String email, Scope scope,
+                            boolean scholarship, int phoneNo, Grup grup, Credentials credentials, Set<StudentCourse> studentCourses){
+
+        studentService.saveStudent( firstName, lastName, email, scope, scholarship, phoneNo, grup, credentials,studentCourses);
+    }
 }

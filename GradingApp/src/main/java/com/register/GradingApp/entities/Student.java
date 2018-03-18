@@ -33,7 +33,7 @@ public class Student implements Serializable{
     private boolean scholarship;
 
     @Column(name = "phone_no")
-    private String phoneNo;
+    private int phoneNo;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "grup_id")
@@ -55,7 +55,7 @@ public class Student implements Serializable{
     }
 
     public Student(String firstName, String lastName, String email, Scope scope, boolean scholarship,
-                   String phoneNo, Grup grup, Credentials credentials /*,Set<Course> courses*/, Set<StudentCourse> studentCourses) {
+                   int phoneNo, Grup grup, Credentials credentials /*,Set<Course> courses*/, Set<StudentCourse> studentCourses) {
         this.firstName = firstName;
         this.studentCourses = studentCourses;
         this.lastName = lastName;
@@ -68,11 +68,11 @@ public class Student implements Serializable{
 //        this.courses = courses;
     }
 
-    public String getPhoneNo() {
+    public int getPhoneNo() {
         return phoneNo;
     }
 
-    public void setPhoneNo(String phoneNo) {
+    public void setPhoneNo(int phoneNo) {
         this.phoneNo = phoneNo;
     }
 
