@@ -35,9 +35,8 @@ public class Student implements Serializable{
     @Column(name = "phone_no")
     private String phoneNo;
 
-
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "group_id")
+    @JoinColumn(name = "grup_id")
     private Grup grup;
 
     @JsonIgnore
@@ -47,12 +46,18 @@ public class Student implements Serializable{
     @ManyToMany(mappedBy = "students")
     private Set<Course> courses = new HashSet<>();
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<StudentCourse> studentCourses;
+
     public Student (){
 
     }
 
-    public Student(String firstName, String lastName, String email, Scope scope, boolean scholarship, String phoneNo, Grup grup, Credentials credentials, Set<Course> courses) {
+    public Student(String firstName, String lastName, String email, Scope scope, boolean scholarship,
+                   String phoneNo, Grup grup, Credentials credentials, Set<Course> courses, Set<StudentCourse> studentCourses) {
         this.firstName = firstName;
+        this.studentCourses = studentCourses;
         this.lastName = lastName;
         this.email = email;
         this.scope = scope;
@@ -61,6 +66,30 @@ public class Student implements Serializable{
         this.grup = grup;
         this.credentials = credentials;
         this.courses = courses;
+    }
+
+    public String getPhoneNo() {
+        return phoneNo;
+    }
+
+    public void setPhoneNo(String phoneNo) {
+        this.phoneNo = phoneNo;
+    }
+
+    public Grup getGrup() {
+        return grup;
+    }
+
+    public void setGrup(Grup grup) {
+        this.grup = grup;
+    }
+
+    public Set<StudentCourse> getStudentCourses() {
+        return studentCourses;
+    }
+
+    public void setStudentCourses(Set<StudentCourse> studentCourses) {
+        this.studentCourses = studentCourses;
     }
 
     public int getId() {
@@ -103,14 +132,6 @@ public class Student implements Serializable{
         this.email = email;
     }
 
-    public String getPhoneNumber() {
-        return phoneNo;
-    }
-
-    public void setPhoneNumber(String phoneNo) {
-        this.phoneNo = phoneNo;
-    }
-
     public Credentials getCredentials() {
         return credentials;
     }
@@ -125,14 +146,6 @@ public class Student implements Serializable{
 
     public void setScholarship(boolean scholarship) {
         this.scholarship = scholarship;
-    }
-
-    public Grup getGroup() {
-        return grup;
-    }
-
-    public void setGroup(Grup grup) {
-        this.grup = grup;
     }
 
     public Set<Course> getCourses() {

@@ -28,14 +28,27 @@ public class Series implements Serializable{
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "series", cascade = CascadeType.ALL)
     private Set<Grup> grups;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "series", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<SeriesCourse> seriesCourses;
+
     public Series (){
 
     }
-    public Series(String name, String specialization, int yearOfStudy, Set<Grup> grups) {
+    public Series(String name, String specialization, int yearOfStudy, Set<Grup> grups, Set<SeriesCourse> seriesCourses) {
         this.name = name;
         this.specialization = specialization;
         this.yearOfStudy = yearOfStudy;
         this.grups = grups;
+        this.seriesCourses = seriesCourses;
+    }
+
+    public Set<SeriesCourse> getSeriesCourses() {
+        return seriesCourses;
+    }
+
+    public void setSeriesCourses(Set<SeriesCourse> seriesCourses) {
+        this.seriesCourses = seriesCourses;
     }
 
     public int getId() {

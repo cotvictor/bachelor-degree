@@ -36,10 +36,15 @@ public class Teacher implements Serializable {
     @OneToOne(mappedBy = "teacher", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Credentials credentials;
 
+//    @JsonIgnore
+//    @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    private Set<TeacherCourse> teacherCourses;
+
     @ManyToMany(mappedBy = "teachers")
     private Set<Course> courses = new HashSet<>();
 
-    public Teacher(String firstName, String lastName, Scope scope, String email, String phoneNo, Credentials credentials, Set<Course> courses) {
+    public Teacher(String firstName, String lastName, Scope scope, String email,
+                   String phoneNo, Credentials credentials, Set<Course> courses /*,Set<TeacherCourse> teacherCourses*/) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.scope = scope;
@@ -47,7 +52,24 @@ public class Teacher implements Serializable {
         this.phoneNo = phoneNo;
         this.credentials = credentials;
         this.courses = courses;
+//        this.teacherCourses = teacherCourses;
     }
+
+    public String getPhoneNo() {
+        return phoneNo;
+    }
+
+    public void setPhoneNo(String phoneNo) {
+        this.phoneNo = phoneNo;
+    }
+
+//    public Set<TeacherCourse> getTeacherCourses() {
+//        return teacherCourses;
+//    }
+//
+//    public void setTeacherCourses(Set<TeacherCourse> teacherCourses) {
+//        this.teacherCourses = teacherCourses;
+//    }
 
     public int getId() {
         return id;
@@ -87,14 +109,6 @@ public class Teacher implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNo;
-    }
-
-    public void setPhoneNumber(String phoneNo) {
-        this.phoneNo = phoneNo;
     }
 
     public Credentials getCredentials() {
