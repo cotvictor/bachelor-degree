@@ -45,7 +45,7 @@ public class Student implements Serializable{
 //    @ManyToMany(mappedBy = "students")
 //    private Set<Course> courses = new HashSet<>();
 
-//    @JsonIgnore acum commentat
+    @JsonIgnore
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<StudentCourse> studentCourses;
 

@@ -15,7 +15,7 @@ public class StudentCourse implements Serializable{
     @Column(name = "id")
     private long id;
 
-    @JsonIgnore
+//    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "student_id")
     private Student student;
