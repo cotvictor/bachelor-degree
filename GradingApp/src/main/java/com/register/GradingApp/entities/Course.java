@@ -39,13 +39,11 @@ public class Course {
             joinColumns = { @JoinColumn(name = "course_id", referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "teacher_id", referencedColumnName = "id") }
     )
-    Set<Teacher> teachers = new HashSet<>();
+    private Set<Teacher> teachers = new HashSet<>();
 
-    @JsonIgnore
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<StudentCourse> studentCourses;
 
-    @JsonIgnore
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<SeriesCourse> seriesCourses;
 
@@ -150,8 +148,8 @@ public class Course {
                 ", description='" + description + '\'' +
                 ", yearOfStudy='" + yearOfStudy + '\'' +
 //                ", students=" + students +
-                ", teachers=" + teachers +
-                ", studentCourses=" + studentCourses +
+                ", teachers=" + teachers.toString() +
+                ", studentCourses=" + studentCourses.toString() +
                 '}';
     }
 }

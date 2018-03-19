@@ -1,6 +1,8 @@
 package com.register.GradingApp.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -13,10 +15,12 @@ public class StudentCourse implements Serializable{
     @Column(name = "id")
     private long id;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "student_id")
     private Student student;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "course_id")
     private Course course;
@@ -35,17 +39,6 @@ public class StudentCourse implements Serializable{
         this.course = course;
         this.teacherGrade = teacherGrade;
         this.studentGrade = studentGrade;
-    }
-
-    @Override
-    public String toString() {
-        return "StudentSubject{" +
-                "id=" + id +
-                ", student=" + student +
-                ", course=" + course +
-                ", teacherGrade=" + teacherGrade +
-                ", studentGrade=" + studentGrade +
-                '}';
     }
 
     public long getId() {
@@ -86,5 +79,16 @@ public class StudentCourse implements Serializable{
 
     public void setStudentGrade(int studentGrade) {
         this.studentGrade = studentGrade;
+    }
+
+    @Override
+    public String toString() {
+        return "StudentSubject{" +
+                "id=" + id +
+                ", student=" + student.toString() +
+                ", course=" + course.toString() +
+                ", teacherGrade=" + teacherGrade +
+                ", studentGrade=" + studentGrade +
+                '}';
     }
 }

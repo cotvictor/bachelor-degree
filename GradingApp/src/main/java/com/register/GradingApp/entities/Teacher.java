@@ -40,6 +40,7 @@ public class Teacher implements Serializable {
 //    @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 //    private Set<TeacherCourse> teacherCourses;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "teachers")
     private Set<Course> courses = new HashSet<>();
 
@@ -141,7 +142,7 @@ public class Teacher implements Serializable {
                 ", email='" + email + '\'' +
                 ", phoneNo='" + phoneNo + '\'' +
                 ", credentials=" + credentials +
-                ", courses=" + courses +
+                ", courses=" + courses.toString() +
                 '}';
     }
 }

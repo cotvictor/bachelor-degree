@@ -24,11 +24,9 @@ public class Series implements Serializable{
     @Column(name = "year_of_study")
     private int yearOfStudy;
 
-    @JsonIgnore
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "series", cascade = CascadeType.ALL)
     private Set<Grup> grups;
 
-    @JsonIgnore
     @OneToMany(mappedBy = "series", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<SeriesCourse> seriesCourses;
 
@@ -98,7 +96,8 @@ public class Series implements Serializable{
                 ", name='" + name + '\'' +
                 ", specialization='" + specialization + '\'' +
                 ", yearOfStudy=" + yearOfStudy +
-                ", grups=" + grups +
+                ", grups=" + grups.toString() +
+                ", seriesCourses=" + seriesCourses.toString() +
                 '}';
     }
 }

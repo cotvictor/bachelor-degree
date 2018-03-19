@@ -27,9 +27,9 @@ INSERT INTO `employer`(`city`, `email`, `first_name`, `last_name`, `phone_no`, `
 INSERT INTO `administrator`(`first_name`, `last_name`, `scope`) VALUES ('admin','admin','ADMIN');
 
 -- course
-INSERT INTO `course`(`description`, `title`, `year_of_study`) VALUES ('Optional','Masuratori in Electronica',3);
-INSERT INTO `course`(`description`, `title`, `year_of_study`) VALUES ('Oblicatoriu','CIJTP',4);
-INSERT INTO `course`(`description`, `title`, `year_of_study`) VALUES ('Obligatoriu','BTM',4);
+INSERT INTO `course`(`id`,`description`, `title`, `year_of_study`) VALUES (1, 'Optional','Masuratori in Electronica',3);
+INSERT INTO `course`(`id`,`description`, `title`, `year_of_study`) VALUES (2, 'Oblicatoriu','CIJTP',4);
+INSERT INTO `course`(`id`,`description`, `title`, `year_of_study`) VALUES (3, 'Obligatoriu','BTM',4);
 
 -- student_course
 INSERT INTO `student_course`(`course_id`, `student_id`, `student_grade`, `teacher_grade`) VALUES (1,1, 7, 8);

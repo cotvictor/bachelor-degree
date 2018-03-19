@@ -8,7 +8,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "grup")
-public class Grup implements Serializable{
+public class Grup implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,6 +21,7 @@ public class Grup implements Serializable{
     @Column(name = "domain")
     private String domain;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "series_id")
     private Series series;
@@ -29,7 +30,7 @@ public class Grup implements Serializable{
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "grup", cascade = CascadeType.ALL)
     private Set<Student> students;
 
-    public Grup () {
+    public Grup() {
 
     }
 
@@ -86,7 +87,6 @@ public class Grup implements Serializable{
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", domain='" + domain + '\'' +
-                ", series=" + series +
                 ", students=" + students +
                 '}';
     }

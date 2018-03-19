@@ -39,14 +39,13 @@ public class Student implements Serializable{
     @JoinColumn(name = "grup_id")
     private Grup grup;
 
-    @JsonIgnore
     @OneToOne(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Credentials credentials;
 //
 //    @ManyToMany(mappedBy = "students")
 //    private Set<Course> courses = new HashSet<>();
 
-    @JsonIgnore
+//    @JsonIgnore acum commentat
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<StudentCourse> studentCourses;
 
@@ -156,6 +155,7 @@ public class Student implements Serializable{
 //        this.courses = courses;
 //    }
 
+
     @Override
     public String toString() {
         return "Student{" +
@@ -165,10 +165,10 @@ public class Student implements Serializable{
                 ", email='" + email + '\'' +
                 ", scope=" + scope +
                 ", scholarship=" + scholarship +
-                ", phoneNo='" + phoneNo + '\'' +
-                ", group=" + grup +
-                ", user=" + credentials +
-//                ", courses=" + courses +
+                ", phoneNo=" + phoneNo +
+                ", grup=" + grup +
+                ", credentials=" + credentials +
+                ", studentCourses=" + studentCourses +
                 '}';
     }
 }

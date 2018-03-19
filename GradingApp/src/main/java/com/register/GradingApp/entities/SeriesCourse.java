@@ -1,5 +1,7 @@
 package com.register.GradingApp.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -12,10 +14,12 @@ public class SeriesCourse implements Serializable {
     @Column(name = "id")
     private long id;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "course_id")
     private Course course;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "series_id")
     private Series series;
@@ -51,5 +55,14 @@ public class SeriesCourse implements Serializable {
 
     public void setSeries(Series series) {
         this.series = series;
+    }
+
+    @Override
+    public String toString() {
+        return "SeriesCourse{" +
+                "id=" + id +
+                ", course=" + course.toString() +
+                ", series=" + series.toString() +
+                '}';
     }
 }
