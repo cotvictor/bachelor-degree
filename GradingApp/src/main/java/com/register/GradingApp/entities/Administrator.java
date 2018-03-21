@@ -20,10 +20,6 @@ public class Administrator implements Serializable{
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "scope")
-    @Enumerated(EnumType.STRING)
-    private Scope scope;
-
     @JsonIgnore
     @OneToOne(mappedBy = "administrator", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Credentials user;
@@ -32,10 +28,9 @@ public class Administrator implements Serializable{
 
     }
 
-    public Administrator(String firstName, String lastName, Scope scope, Credentials user) {
+    public Administrator(String firstName, String lastName, Credentials user) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.scope = scope;
         this.user = user;
     }
 
@@ -63,14 +58,6 @@ public class Administrator implements Serializable{
         this.lastName = lastName;
     }
 
-    public Scope getScope() {
-        return scope;
-    }
-
-    public void setScope(Scope scope) {
-        this.scope = scope;
-    }
-
     public Credentials getCredentials() {
         return user;
     }
@@ -85,7 +72,6 @@ public class Administrator implements Serializable{
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", scope=" + scope +
                 ", user=" + user +
                 '}';
     }

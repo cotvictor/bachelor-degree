@@ -25,10 +25,6 @@ public class Student implements Serializable{
     @Column(name = "email")
     private String email;
 
-    @Column(name = "scope")
-    @Enumerated(EnumType.STRING)
-    private Scope scope;
-
     @Column(name = "scholarship")
     private boolean scholarship;
 
@@ -53,13 +49,12 @@ public class Student implements Serializable{
 
     }
 
-    public Student(String firstName, String lastName, String email, Scope scope, boolean scholarship,
+    public Student(String firstName, String lastName, String email, boolean scholarship,
                    int phoneNo, Grup grup, Credentials credentials /*,Set<Course> courses*/, Set<StudentCourse> studentCourses) {
         this.firstName = firstName;
         this.studentCourses = studentCourses;
         this.lastName = lastName;
         this.email = email;
-        this.scope = scope;
         this.scholarship = scholarship;
         this.phoneNo = phoneNo;
         this.grup = grup;
@@ -115,14 +110,6 @@ public class Student implements Serializable{
         this.lastName = lastName;
     }
 
-    public Scope getScope() {
-        return scope;
-    }
-
-    public void setScope(Scope scope) {
-        this.scope = scope;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -163,7 +150,6 @@ public class Student implements Serializable{
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
-                ", scope=" + scope +
                 ", scholarship=" + scholarship +
                 ", phoneNo=" + phoneNo +
                 ", grup=" + grup +

@@ -21,4 +21,9 @@ public class CredentialsService implements CredentialsServiceInterface{
     public List<Credentials> getAllCredentials() {
         return credentialsRepository.findAll();
     }
+
+    @Override
+    public Credentials getCredentialsByUsername(String username) {
+        return credentialsRepository.findByUserName(username);
+    }
 }

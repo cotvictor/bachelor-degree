@@ -35,4 +35,13 @@ public class CredentialsController {
 
         return credentialsRepository.findAll();
     }
+
+    @RequestMapping(value = "/byUserName",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public Credentials getCredentialsByUsername(String username){
+
+        return credentialsService.getCredentialsByUsername(username);
+    }
 }

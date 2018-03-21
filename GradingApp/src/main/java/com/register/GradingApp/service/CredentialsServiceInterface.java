@@ -7,4 +7,6 @@ import java.util.List;
 public interface CredentialsServiceInterface {
 
     List<Credentials> getAllCredentials();
+
+    Credentials getCredentialsByUsername(String username);
 }

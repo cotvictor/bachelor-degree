@@ -8,23 +8,28 @@ INSERT INTO `grup`(`domain`, `name`, `series_id`) VALUES ('CTI',443,1);
 INSERT INTO `grup`(`domain`, `name`, `series_id`) VALUES ('ETTI',444,2);
 
 -- student
-INSERT INTO `student`(`first_name`, `last_name`, `email`, `phone_no`, `scholarship`, `scope`, `grup_id`) VALUES ('Diana','Miron','diana.miron@mail.com', 0745504532, TRUE, 'STUDENT', 1);
-INSERT INTO `student`(`first_name`, `last_name`, `email`, `phone_no`, `scholarship`, `scope`, `grup_id`) VALUES ('Alex','Valan','alex.valan@mail.com', 0745504932, FALSE, 'STUDENT', 1);
-
--- credentials
-INSERT INTO `credentials`(`user_name`, `password`,`student_id`) VALUES ('diacon.miron','student',1);
-INSERT INTO `credentials`(`user_name`, `password`,`student_id`) VALUES ('alex.valan','student', 2);
+INSERT INTO `student`(`first_name`, `last_name`, `email`, `phone_no`, `scholarship`, `grup_id`) VALUES ('Diana','Miron','diana.miron@mail.com', 0745504532, TRUE, 1);
+INSERT INTO `student`(`first_name`, `last_name`, `email`, `phone_no`, `scholarship`, `grup_id`) VALUES ('Alex','Valan','alex.valan@mail.com', 0745504932, FALSE, 1);
 
 -- teacher
-INSERT INTO `teacher`(`first_name`, `last_name`, `email`, `phone_no`, `scope`) VALUES ('Teodor','Mihaelescu','teodor.mihaelescu@mail.com',0723452435,'TEACHER');
-INSERT INTO `teacher`(`first_name`, `last_name`, `email`, `phone_no`, `scope`) VALUES ('Vladislav','Ionescu','vladislav.ionescu@mail.com',0725552435,'TEACHER');
+INSERT INTO `teacher`(`first_name`, `last_name`, `email`, `phone_no`) VALUES ('Teodor','Mihaelescu','teodor.mihaelescu@mail.com',0723452435);
+INSERT INTO `teacher`(`first_name`, `last_name`, `email`, `phone_no`) VALUES ('Vladislav','Ionescu','vladislav.ionescu@mail.com',0725552435);
 
 -- employer
-INSERT INTO `employer`(`city`, `email`, `first_name`, `last_name`, `phone_no`, `scope`) VALUES ('Bucuresti','elcom@mail.com','Elcom','Products',07234234244,'EMPLOYER');
-INSERT INTO `employer`(`city`, `email`, `first_name`, `last_name`, `phone_no`, `scope`) VALUES ('Bucuresti','tehno@mail.com','Tehno','SRL',0723353424,'EMPLOYER');
+INSERT INTO `employer`(`city`, `email`, `first_name`, `last_name`, `phone_no`) VALUES ('Bucuresti','elcom@mail.com','Elcom','Products',07234234244);
+INSERT INTO `employer`(`city`, `email`, `first_name`, `last_name`, `phone_no`) VALUES ('Bucuresti','tehno@mail.com','Tehno','SRL',0723353424);
 
 -- administrator
-INSERT INTO `administrator`(`first_name`, `last_name`, `scope`) VALUES ('admin','admin','ADMIN');
+INSERT INTO `administrator`(`first_name`, `last_name`) VALUES ('admin','admin');
+
+-- credentials
+INSERT INTO `credentials`(`user_name`, `password`,`student_id`, `role`) VALUES ('diacon.miron','student',1, 'STUDENT');
+INSERT INTO `credentials`(`user_name`, `password`,`student_id`, `role`) VALUES ('alex.valan','student', 2, 'STUDENT');
+INSERT INTO `credentials`(`user_name`, `password`,`teacher_id`, `role`) VALUES ('teodor.mihaelescu','teach', 1, 'TEACHER');
+INSERT INTO `credentials`(`user_name`, `password`,`teacher_id`, `role`) VALUES ('vladislav.ionescu','teach', 2, 'TEACHER');
+INSERT INTO `credentials`(`user_name`, `password`,`employee_id`, `role`) VALUES ('elcom.products','emp', 1, 'EMPLOYER');
+INSERT INTO `credentials`(`user_name`, `password`,`employee_id`, `role`) VALUES ('tehno.srl','emp', 2, 'EMPLOYER');
+INSERT INTO `credentials`(`user_name`, `password`,`administrator_id`, `role`) VALUES ('admin','admin', 1, 'ADMIN');
 
 -- course
 INSERT INTO `course`(`id`,`description`, `title`, `year_of_study`) VALUES (1, 'Optional','Masuratori in Electronica',3);

@@ -48,9 +48,9 @@ public class StudentController {
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public void saveStudnet(String firstName, String lastName, String email, Scope scope,
+    public void saveStudnet(String firstName, String lastName, String email,
                             boolean scholarship, int phoneNo, Grup grup, Credentials credentials, Set<StudentCourse> studentCourses){
 
-        studentService.saveStudent( firstName, lastName, email, scope, scholarship, phoneNo, grup, credentials,studentCourses);
+        studentService.saveStudent(firstName,lastName,email, scholarship, phoneNo, grup, credentials, studentCourses);
     }
 }

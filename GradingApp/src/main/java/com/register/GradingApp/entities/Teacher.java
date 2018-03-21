@@ -22,10 +22,6 @@ public class Teacher implements Serializable {
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "scope")
-    @Enumerated(EnumType.STRING)
-    private Scope scope;
-
     @Column(name = "email")
     private String email;
 
@@ -48,11 +44,10 @@ public class Teacher implements Serializable {
 
     }
 
-    public Teacher(String firstName, String lastName, Scope scope, String email,
+    public Teacher(String firstName, String lastName, String email,
                    String phoneNo, Credentials credentials, Set<Course> courses /*,Set<TeacherCourse> teacherCourses*/) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.scope = scope;
         this.email = email;
         this.phoneNo = phoneNo;
         this.credentials = credentials;
@@ -100,14 +95,6 @@ public class Teacher implements Serializable {
         this.lastName = lastName;
     }
 
-    public Scope getScope() {
-        return scope;
-    }
-
-    public void setScope(Scope scope) {
-        this.scope = scope;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -138,7 +125,6 @@ public class Teacher implements Serializable {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", scope=" + scope +
                 ", email='" + email + '\'' +
                 ", phoneNo='" + phoneNo + '\'' +
                 ", credentials=" + credentials +

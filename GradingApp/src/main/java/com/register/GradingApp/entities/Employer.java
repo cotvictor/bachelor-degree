@@ -20,10 +20,6 @@ public class Employer implements Serializable{
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "scope")
-    @Enumerated(EnumType.STRING)
-    private Scope scope;
-
     @Column(name = "email")
     private String email;
 
@@ -42,11 +38,10 @@ public class Employer implements Serializable{
 
     }
 
-    public Employer(String firstName, String lastName, String email, String phoneNo, String city, Credentials credentials, Scope scope) {
+    public Employer(String firstName, String lastName, String email, String phoneNo, String city, Credentials credentials) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.scope = scope;
         this.phoneNo = phoneNo;
         this.city = city;
         this.credentials = credentials;
@@ -54,14 +49,6 @@ public class Employer implements Serializable{
 
     public int getId() {
         return id;
-    }
-
-    public Scope getScope() {
-        return scope;
-    }
-
-    public void setScope(Scope scope) {
-        this.scope = scope;
     }
 
     public void setId(int id) {
@@ -124,7 +111,6 @@ public class Employer implements Serializable{
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
-                ", scope=" + scope +
                 ", phoneNo='" + phoneNo + '\'' +
                 ", location='" + city + '\'' +
                 ", user=" + credentials +

@@ -36,12 +36,12 @@ public class StudentService implements StudentServiceInterface {
     }
 
     @Override
-    public void saveStudent(String firstName, String lastName, String email, Scope scope,
+    public void saveStudent(String firstName, String lastName, String email,
                                boolean scholarship, int phoneNo, Grup grup,Credentials credentials,Set<StudentCourse> studentCourses) {
         if ( studentRepository.findStudentByFirstNameAndLastName(firstName, lastName) != null ){
             throw new StudentAlreadyExistsException(firstName, lastName);
         }
-        Student newStudent = new Student(firstName, lastName, email, scope,scholarship,
+        Student newStudent = new Student(firstName, lastName, email, scholarship,
                 phoneNo,grup, credentials, studentCourses);
         System.out.println(newStudent.toString());
         studentRepository.save(newStudent);

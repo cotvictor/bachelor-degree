@@ -20,6 +20,9 @@ public class Credentials implements Serializable {
     @Column(name = "password")
     private String password;
 
+    @Column(name = "role")
+    private String role;
+
     @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "teacher_id")
@@ -44,7 +47,9 @@ public class Credentials implements Serializable {
 
     }
 
-    public Credentials(String userName, String password, Teacher teacher, Student student, Employer employer, Administrator administrator) {
+    public Credentials(String userName, String password, Teacher teacher,
+                       Student student, Employer employer, Administrator administrator, String role) {
+        this.role = role;
         this.userName = userName;
         this.password = password;
         this.teacher = teacher;
@@ -59,10 +64,11 @@ public class Credentials implements Serializable {
                 "id=" + id +
                 ", username='" + userName + '\'' +
                 ", password='" + password + '\'' +
-                ", teacher=" + teacher +
-                ", student=" + student +
-                ", employer=" + employer +
-                ", administrator=" + administrator +
+                ", role=" + role +
+                ", teacher=" + teacher.toString() +
+                ", student=" + student.toString() +
+                ", employer=" + employer.toString() +
+                ", administrator=" + administrator.toString() +
                 '}';
     }
 
@@ -74,11 +80,11 @@ public class Credentials implements Serializable {
         this.id = id;
     }
 
-    public String getCredentialsUserName() {
+    public String getUserName() {
         return userName;
     }
 
-    public void setCredentialsUserName(String userName) {
+    public void setUserName(String userName) {
         this.userName = userName;
     }
 
@@ -90,6 +96,30 @@ public class Credentials implements Serializable {
         this.password = password;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
     public Employer getEmployer() {
         return employer;
     }
@@ -98,4 +128,11 @@ public class Credentials implements Serializable {
         this.employer = employer;
     }
 
+    public Administrator getAdministrator() {
+        return administrator;
+    }
+
+    public void setAdministrator(Administrator administrator) {
+        this.administrator = administrator;
+    }
 }

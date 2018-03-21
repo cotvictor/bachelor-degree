@@ -10,4 +10,6 @@ import java.util.List;
 public interface CredentialsRepository extends JpaRepository<Credentials, Integer > {
 
     List<Credentials> findAll();
+
+    Credentials findByUserName(String username);
 }

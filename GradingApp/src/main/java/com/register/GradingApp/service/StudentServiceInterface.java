@@ -11,7 +11,7 @@ public interface StudentServiceInterface {
 
     Student getStudentByFirstNameAndLastName(String firstName, String lastName);
 
-    void saveStudent(String firstName, String lastName, String email, Scope scope,
+    void saveStudent(String firstName, String lastName, String email,
                      boolean scholarship, int phoneNo, Grup grup, Credentials credentials, Set<StudentCourse> studentCourses);
 
 }
