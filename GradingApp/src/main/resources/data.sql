@@ -23,13 +23,13 @@ INSERT INTO `employer`(`city`, `email`, `first_name`, `last_name`, `phone_no`) V
 INSERT INTO `administrator`(`first_name`, `last_name`) VALUES ('admin','admin');
 
 -- credentials
-INSERT INTO `credentials`(`user_name`, `password`,`student_id`, `role`) VALUES ('diacon.miron','student',1, 'STUDENT');
-INSERT INTO `credentials`(`user_name`, `password`,`student_id`, `role`) VALUES ('alex.valan','student', 2, 'STUDENT');
-INSERT INTO `credentials`(`user_name`, `password`,`teacher_id`, `role`) VALUES ('teodor.mihaelescu','teach', 1, 'TEACHER');
-INSERT INTO `credentials`(`user_name`, `password`,`teacher_id`, `role`) VALUES ('vladislav.ionescu','teach', 2, 'TEACHER');
-INSERT INTO `credentials`(`user_name`, `password`,`employee_id`, `role`) VALUES ('elcom.products','emp', 1, 'EMPLOYER');
-INSERT INTO `credentials`(`user_name`, `password`,`employee_id`, `role`) VALUES ('tehno.srl','emp', 2, 'EMPLOYER');
-INSERT INTO `credentials`(`user_name`, `password`,`administrator_id`, `role`) VALUES ('admin','admin', 1, 'ADMIN');
+INSERT INTO `credentials`(`username`, `password`,`student_id`, `role`) VALUES ('diaconmiron','student',1, 'ROLE_STUDENT');
+INSERT INTO `credentials`(`username`, `password`,`student_id`, `role`) VALUES ('alex.valan','student', 2, 'ROLE_STUDENT');
+INSERT INTO `credentials`(`username`, `password`,`teacher_id`, `role`) VALUES ('teodor.mihaelescu','teach', 1, 'ROLE_TEACHER');
+INSERT INTO `credentials`(`username`, `password`,`teacher_id`, `role`) VALUES ('vladislav.ionescu','teach', 2, 'ROLE_TEACHER');
+INSERT INTO `credentials`(`username`, `password`,`employee_id`, `role`) VALUES ('elcom.products','emp', 1, 'ROLE_EMPLOYER');
+INSERT INTO `credentials`(`username`, `password`,`employee_id`, `role`) VALUES ('tehno.srl','emp', 2, 'ROLE_EMPLOYER');
+INSERT INTO `credentials`(`username`, `password`,`administrator_id`, `role`) VALUES ('admin','admin', 1, 'ROLE_ADMIN');
 
 -- course
 INSERT INTO `course`(`id`,`description`, `title`, `year_of_study`) VALUES (1, 'Optional','Masuratori in Electronica',3);

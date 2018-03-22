@@ -14,7 +14,7 @@ public class Credentials implements Serializable {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "user_name")
+    @Column(name = "username")
     private String userName;
 
     @Column(name = "password")
