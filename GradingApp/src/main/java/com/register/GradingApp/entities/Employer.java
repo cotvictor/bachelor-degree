@@ -24,7 +24,7 @@ public class Employer implements Serializable{
     private String email;
 
     @Column(name = "phone_no")
-    private String phoneNo;
+    public int phoneNo;
 
     @Column(name = "city")
     private String city;
@@ -38,7 +38,7 @@ public class Employer implements Serializable{
 
     }
 
-    public Employer(String firstName, String lastName, String email, String phoneNo, String city, Credentials credentials) {
+    public Employer(String firstName, String lastName, String email, int phoneNo, String city, Credentials credentials) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -79,11 +79,11 @@ public class Employer implements Serializable{
         this.email = email;
     }
 
-    public String getPhoneNumber() {
+    public int getPhoneNumber() {
         return phoneNo;
     }
 
-    public void setPhoneNumber(String phoneNo) {
+    public void setPhoneNumber(int phoneNo) {
         this.phoneNo = phoneNo;
     }
 

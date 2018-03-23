@@ -26,7 +26,7 @@ public class Teacher implements Serializable {
     private String email;
 
     @Column(name = "phone_no")
-    private String phoneNo;
+    private int phoneNo;
 
     @JsonIgnore
     @OneToOne(mappedBy = "teacher", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -45,7 +45,7 @@ public class Teacher implements Serializable {
     }
 
     public Teacher(String firstName, String lastName, String email,
-                   String phoneNo, Credentials credentials, Set<Course> courses /*,Set<TeacherCourse> teacherCourses*/) {
+                   int phoneNo, Credentials credentials, Set<Course> courses /*,Set<TeacherCourse> teacherCourses*/) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -55,11 +55,11 @@ public class Teacher implements Serializable {
 //        this.teacherCourses = teacherCourses;
     }
 
-    public String getPhoneNo() {
+    public int getPhoneNo() {
         return phoneNo;
     }
 
-    public void setPhoneNo(String phoneNo) {
+    public void setPhoneNo(int phoneNo) {
         this.phoneNo = phoneNo;
     }
 

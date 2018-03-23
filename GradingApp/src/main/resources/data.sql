@@ -16,8 +16,8 @@ INSERT INTO `teacher`(`first_name`, `last_name`, `email`, `phone_no`) VALUES ('T
 INSERT INTO `teacher`(`first_name`, `last_name`, `email`, `phone_no`) VALUES ('Vladislav','Ionescu','vladislav.ionescu@mail.com',0725552435);
 
 -- employer
-INSERT INTO `employer`(`city`, `email`, `first_name`, `last_name`, `phone_no`) VALUES ('Bucuresti','elcom@mail.com','Elcom','Products',07234234244);
-INSERT INTO `employer`(`city`, `email`, `first_name`, `last_name`, `phone_no`) VALUES ('Bucuresti','tehno@mail.com','Tehno','SRL',0723353424);
+INSERT INTO `employer`(`city`, `email`, `first_name`, `last_name`, `phone_no`) VALUES ('Bucuresti','elcom@mail.com','Elcom','Products',0725552435);
+INSERT INTO `employer`(`city`, `email`, `first_name`, `last_name`, `phone_no`) VALUES ('Bucuresti','tehno@mail.com','Tehno','SRL',0725572435);
 
 -- administrator
 INSERT INTO `administrator`(`first_name`, `last_name`) VALUES ('admin','admin');
