@@ -63,19 +63,24 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#" th:href="@{/teacherHome/greetingTeacher}">Home <span class="sr-only">(current)</span></a></li>
+                <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+                <!--<li><a href="#">Link</a></li>-->
+                <!--<div class="container">-->
+                <!--<button type="button" class="btn btn-default" aria-label="Left Align">-->
+                <!--<span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>-->
+                <!--</button>-->
+                <!--</div>-->
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Years dropdown <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#" th:href="@{/teacherHome/coursesByYear1}">First Year</a></li>
+                        <li><a href="#">First Year</a></li>
                         <li><a href="#">Second Year</a></li>
                         <li><a href="#">Third Year</a></li>
                         <li><a href="#">Fourth Year</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="#" th:href="@{/teacherHome/employersList}">Employers List</a></li>
-                        <li><a href="#" th:href="@{/teacherHome/studentsList}">Students List</a></li>
                     </ul>
                 </li>
                 <form th:action="@{/logout}" method="post">
@@ -89,16 +94,14 @@
 <div class="container-fluid text-center">
     <div class="row content">
         <div class="col-sm-2 sidenav">
-            <p><a href="#">News</a></p>
-            <p><a href="#" th:href="@{/teacherHome/yearsList}" >Years</a></p>
-            <p><a href="#" th:href="@{/teacherHome/yearsList}" >Exams Date</a></p>
         </div>
         <div class="col-sm-8 text-left">
-            <h1>Welcome</h1>
-            <p> About Facultatea de Electronica.</p>
-
-            <h3>Test</h3>
-            <p>More about it.</p>
+            <h1>List of all years in ETTI Faculty:</h1>
+            <h3>First Year</h3>
+            <li><a href="#" th:href="@{/teacherHome/coursesByYear1}"> Tap for first year.</a> </li>
+            <li><a href="#" th:href="@{/teacherHome/employersList}">Second Year</a></li>
+            <h3>Third Year</h3>
+            <h3>Fourth Year</h3>
         </div>
         <div class="col-sm-2 sidenav">
             <div class="well">

@@ -39,7 +39,7 @@ public class Course {
             joinColumns = { @JoinColumn(name = "course_id", referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "teacher_id", referencedColumnName = "id") }
     )
-    private Set<Teacher> teachers = new HashSet<>();
+    public Set<Teacher> teachers = new HashSet<>();
 
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<StudentCourse> studentCourses;

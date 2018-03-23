@@ -62,13 +62,6 @@ public class StudentController {
         studentService.saveStudent(firstName,lastName,email, scholarship, phoneNo, grup, credentials, studentCourses);
     }
 
-    @GetMapping("/studentsList")
-    public String showPage(Model model, @RequestParam(defaultValue = "0") int page){
-        model.addAttribute("data", studentRepository.findAll(new PageRequest(page, 1)));
-        return "studentsList";
-    }
-
-
     @GetMapping("/greeting")
     public String greeting(@RequestParam(name="name", required=false, defaultValue="Student") String name, Model model) {
         model.addAttribute("name", name);
