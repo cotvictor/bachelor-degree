@@ -64,4 +64,8 @@ public class TeacherController {
         return "coursesByYear1";
     }
 
+    @GetMapping("/test")
+    public String showTest() {
+        return "test";
+    }
 }

@@ -1,49 +1,43 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Bootstrap Example</title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <style>
-        /* Remove the navbar's default margin-bottom and rounded borders */
-        .navbar {
-            margin-bottom: 0;
-            border-radius: 0;
-        }
+    <link rel="stylesheet" type="text/css" th:href="@{/css/menu.css}"/>
+    <script type="text/javascript" src="jquery-1.8.3.js"></script>
+    <script type="text/javascript">
+        var $courses = $('#courses');
+        $(function (){
+            $.ajax({
+                type: 'GET',
+                url: "http://localhost:9090/api/courses/allCourses",
+                succsess: function(courses){
+                   $.each(course, function(i, course){
+                       $courses.append('<li>my course</li>');
+                   });
+                }
+            });
+        });
+    </script>
+    <!--&lt;!&ndash;appJS&ndash;&gt;-->
+    <!--<script type="text/javascript">-->
+        <!--$(document).ready(function () {-->
+            <!--$.ajax({-->
+                <!--type: "GET",-->
+                <!--url: "http://localhost:8013/api/users/all",-->
+                <!--timeout: 5000,-->
+                <!--success: function (data) {-->
+                    <!--createTable(data);-->
+                <!--},-->
+                <!--error: function (e) {-->
+                    <!--console.log("Error loading all users: " + e)-->
+                <!--}-->
+            <!--});    -->
+        <!--});-->
 
-        /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-        .row.content {height: 450px}
-
-        /* Set gray background color and 100% height */
-        .sidenav {
-            padding-top: 20px;
-            background-color: #f1f1f1;
-            height: 150%;
-        }
-
-        /* Set black background color, white text and some padding */
-        footer {
-            position:absolute;
-            bottom:0;
-            width:100%;
-            height:60px;
-            background-color: #555;
-            color: white;
-            padding: 15px;
-        }
-
-        /* On small screens, set height to 'auto' for sidenav and grid */
-        @media screen and (max-width: 767px) {
-            .sidenav {
-                height: auto;
-                padding: 15px;
-            }
-            .row.content {height:auto;}
-        }
-    </style>
 </head>
 <body>
 
@@ -66,12 +60,6 @@
                 <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <!--<li><a href="#">Link</a></li>-->
-                <!--<div class="container">-->
-                <!--<button type="button" class="btn btn-default" aria-label="Left Align">-->
-                <!--<span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>-->
-                <!--</button>-->
-                <!--</div>-->
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Years dropdown <span class="caret"></span></a>
                     <ul class="dropdown-menu">
@@ -103,6 +91,9 @@
             <h3>Third Year</h3>
             <h3>Fourth Year</h3>
         </div>
+
+        <ul id="courses"></ul>
+
         <div class="col-sm-2 sidenav">
             <div class="well">
                 <p>ADS</p>
@@ -117,6 +108,7 @@
 <footer class="container-fluid text-center">
     <p>Footer of Electronicscscscs</p>
 </footer>
+
 
 </body>
 </html>
