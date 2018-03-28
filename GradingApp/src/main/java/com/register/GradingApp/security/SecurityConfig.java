@@ -38,4 +38,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll();
         http.exceptionHandling().accessDeniedPage("/403");
     }
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.inMemoryAuthentication()
+                .withUser("admin").password("admin").roles("ADMIN")
+                .and()
+                .withUser("diacon.miron").password("student").roles("STUDENT")
+                .and()
+                .withUser("tehno.srl").password("emp").roles("EMPLOYER")
+                .and()
+                .withUser("teodor.mihaelescu").password("teach").roles("TEACHER");
+    }
 }
