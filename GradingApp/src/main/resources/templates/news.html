@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Grading App</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/menu.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/footerfont.css}"/>
+    <style>
+        .tab {
+            display:inline-block;
+            margin-left: 40px;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse" th:fragment="nvbr">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" th:href="@{/home}">Brand</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#" th:href="@{/home}">Home <span class="sr-only">(current)</span></a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Main menu<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" th:href="@{/yearsList}">First Year</a></li>
+                        <li><a href="#">Second Year</a></li>
+                        <li><a href="#">Third Year</a></li>
+                        <li><a href="#">Fourth Year</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#" th:href="@{/teacherHome/employersList}">Employers List</a></li>
+                        <li><a href="#" th:href="@{/teacherHome/studentsList}">Students List</a></li>
+                        <li><a href="#" th:href="@{/teacherHome/teachersList}">Teachers List</a></li>
+                    </ul>
+                </li>
+                <form th:action="@{/logout}" method="post">
+                    <input class="btn btn-outline-danger" type="submit" value="Sign Out" />
+                </form>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid text-center">
+    <div class="row content">
+        <div class="col-sm-2 sidenav">
+            <br/>
+            <br/>
+            <br/>
+            <p><a href="#" th:href="@{/adminHome/news}"><font size="5">News</font></a></p>
+            <br/>
+            <p><a href="#" th:href="@{/adminHome/yearsList}"><font size="5">Years</font></a></p>
+            <br/>
+            <p><a href="#"><font size="5">Exams Date</font></a></p>
+            <br/>
+            <p><a href="#" th:href="@{/adminHome/history}"><font size="5">History</font></a></p>
+        </div>
+
+        <div class="col-sm-8 text-left" th:fragment="welcometext">
+            <h2>Evenimente:</h2>
+            <br/>
+            <h3>Prelegere susţinută de experţi de la Oficiul European de Brevete – Olanda</h3>
+            <p>European Patent Office şi Facultatea de Electronică, Telecomunicaţii şi Tehnologia Informaţiei din Universitatea POLITEHNICA Bucureşti organizează miercuri, 21 iunie 2017, începând cu ora 11:00 în Sala A101, o prelegere cu titlul “Protect Your Ideas  – by EPO under the European Patent Convention” susţinută de un grup de experţi în examinarea de brevete din ICT Cluster of the European Patent Office, Olanda, condus de Manfred Scheu - Director de departament.</p>
+            <br/>
+            <h3>Admitere licenta:</h3>
+            <p>Facultatea de Electronică, Telecomunicaţii şi Tehnologia Informaţiei pregăteşte ingineri în domeniile:
+
+                - Inginerie electronică, telecomunicaţii şi tehnologii informaţionale
+
+                - Calculatoare şi tehnologia informaţiei</p>
+            <h3>Admitere master:</h3>
+            <p>Admiterea studentiolor la mastere se va efectua pe data de 25.09.2018</p>
+        </div>
+
+        <div class="col-sm-2 sidenav">
+            <div class="well">
+                <p>ADS</p>
+            </div>
+            <div class="well">
+                <p>ADS</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div th:replace="admin :: footer"></div>
+
+</body>
+</html>

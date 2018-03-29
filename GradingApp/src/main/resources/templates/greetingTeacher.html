@@ -8,11 +8,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" th:href="@{/css/menu.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/footerfont.css}"/>
 
 </head>
 <body>
 
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse" th:fragment="navbar">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -39,8 +40,8 @@
                         <li><a href="#">Third Year</a></li>
                         <li><a href="#">Fourth Year</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#" th:href="@{/teacherHome/employersList}">Employers List</a></li>
-                        <li><a href="#" th:href="@{/teacherHome/studentsList}">Students List</a></li>
+                        <li><a href="#" th:href="@{/employersList}">Employers List</a></li>
+                        <li><a href="#" th:href="@{/studentsList}">Students List</a></li>
                     </ul>
                 </li>
                 <form th:action="@{/logout}" method="post">

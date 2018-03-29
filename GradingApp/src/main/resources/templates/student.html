@@ -9,21 +9,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" th:href="@{/css/menu.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/css/footerfont.css}"/>
-    <script type="text/javascript" src="jquery-1.8.3.js"></script>
-    <script type="text/javascript">
-        var $courses = $('#courses');
-        $(function (){
-            $.ajax({
-                type: 'GET',
-                url: "http://localhost:9090/api/courses/allCourses",
-                succsess: function(courses){
-                   $.each(course, function(i, course){
-                       $courses.append('<li>my course</li>');
-                   });
-                }
-            });
-        });
-    </script>
 
 </head>
 <body>
@@ -33,18 +18,17 @@
 <div class="container-fluid text-center">
     <div class="row content">
         <div class="col-sm-2 sidenav">
+            <p><a href="#">News</a></p>
+            <p><a href="#" th:href="@{/adminHome/yearsList}" >Years</a></p>
+            <p><a href="#" th:href="@{/teacherHome/yearsList}" >Exams Date</a></p>
         </div>
         <div class="col-sm-8 text-left">
-            <h1>List of all years in ETTI Faculty:</h1>
-            <h3>First Year</h3>
-            <li><a href="#" th:href="@{/teacherHome/coursesByYear1}"> Tap for first year.</a> </li>
-            <li><a href="#" th:href="@{/teacherHome/employersList}">Second Year</a></li>
-            <h3>Third Year</h3>
-            <h3>Fourth Year</h3>
+            <h1>Welcome to student's home page.</h1>
+            <p> About Facultatea de Electronica.</p>
+
+            <h3>Test</h3>
+            <p>More about it.</p>
         </div>
-
-        <ul id="courses"></ul>
-
         <div class="col-sm-2 sidenav">
             <div class="well">
                 <p>ADS</p>

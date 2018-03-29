@@ -11,6 +11,11 @@ public class WebController {
         return "home";
     }
 
+    @RequestMapping(value="/home")
+    public String homie(){
+        return "home";
+    }
+
     @RequestMapping(value="/user")
     public String user(){
         return "user";
@@ -44,5 +49,15 @@ public class WebController {
     @RequestMapping(value="/403")
     public String Error403(){
         return "403";
+    }
+
+    @RequestMapping(value="/studentList")
+    public String showAllStudents(){
+        return "studentsList";
+    }
+
+    @RequestMapping(value="/employersList")
+    public String showAllEmployers(){
+        return "employersList";
     }
 }

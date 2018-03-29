@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>History</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/menu.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/footerfont.css}"/>
+
+</head>
+<body>
+
+<nav class="navbar navbar-inverse" th:fragment="nvbr">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" th:href="@{/home}">Brand</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#" th:href="@{/home}">Home <span class="sr-only">(current)</span></a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Main menu<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" th:href="@{/yearsList}">First Year</a></li>
+                        <li><a href="#">Second Year</a></li>
+                        <li><a href="#">Third Year</a></li>
+                        <li><a href="#">Fourth Year</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#" th:href="@{/teacherHome/employersList}">Employers List</a></li>
+                        <li><a href="#" th:href="@{/teacherHome/studentsList}">Students List</a></li>
+                        <li><a href="#" th:href="@{/teacherHome/teachersList}">Teachers List</a></li>
+                    </ul>
+                </li>
+                <form th:action="@{/logout}" method="post">
+                    <input class="btn btn-outline-danger" type="submit" value="Sign Out" />
+                </form>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid text-center">
+    <div class="row content">
+        <div class="col-sm-2 sidenav">
+            <br/>
+            <br/>
+            <br/>
+            <p><a href="#" th:href="@{/adminHome/news}"><font size="5">News</font></a></p>
+            <br/>
+            <p><a href="#" th:href="@{/adminHome/yearsList}"><font size="5">Years</font></a></p>
+            <br/>
+            <p><a href="#"><font size="5">Exams Date</font></a></p>
+            <br/>
+            <p><a href="#" th:href="@{/adminHome/history}"><font size="5">History</font></a></p>
+        </div>
+
+        <div class="col-sm-8 text-left" th:fragment="welcometext">
+            <h1>Facultatea de Electronica, Telecomunicatii si Tehnologia Informatiei</h1>
+            <p><span style="display:inline-block; width: 4;">Invatamantul romanesc in domeniul Electronicii si Telecomunicatiilor a inceput in anul 1920 in cadrul Scolii Politehnice din Bucuresti. Aceste preocupari au fost dezvoltate ulterior, devenind o specializare aparte numita Telefonie-Telegrafie in cadrul Facultatii Electromecanice (1924), care mai tarziu va evolua ca sectie distincta sub numele de Electrocomunicatii (1929). Facultatea de Electronica a fost infiintata in anul 1953 ca ramura a Facultatii de Electromecanica, incluzand specializarile Electronica, Radiocomunicatii si Telefonie-Telegrafie.
+
+                Facultatea de Electronica, Telecomunicatii si Tehnologia Informatiei ocupa un spatiu impresionant de circa 20000 m2, in campusul Leu. Campusul ofera conditii foarte bune. Facultatea de Electronica, Telecomunicatii si Tehnologia Informatiei ocupa doua cladiri continand laboratoare si sali de curs in centrul campusului. Alte cladiri importante sunt Centrul Studentesc cu aproximativ 500 de camere confortabile, sala de sport, centrul medical, trei restaurante etc. Facultatea de Electronica, Telecomunicatii si Tehnologia Informatiei ofera studentilor si absolventilor sai un ansamblu armonios de avantaje educationale.
+
+                Membrii corpului profesoral, cu o bogata experienta in cercetare, predau cursuri atat studentilor cat si absolventilor in domeniile Electronica, Microelectronica, Ingineria Calculatoarelor si Telecomunicatii. In toate aceste domenii, accentul este pus pe acumularea de cunostinte teoretice si practice. Toate cursurile sunt alcatuite astfel incat sa indeplineasca toate cerintele educationale si de instruire, cerinte impuse de tehnologia de varf actuala si pentru a fi de folos in industria si afacerile corespunzatoare bazate pe transfer de tehnologie in Romania. Ca rezultat al unor puternice legaturi si colaborari cu industria si mediul de afaceri, facultatea a raspuns la
+                cresterea cererii de recrutare a absolventilor din industrie printr-un bagaj mai larg de cunostinte, incluzand atat o calificare in domeniul tehnologic cat si in domeniul economic si managerial.</span></p>
+        </div>
+
+        <div class="col-sm-2 sidenav">
+            <div class="well">
+                <p>ADS</p>
+            </div>
+            <div class="well">
+                <p>ADS</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div th:replace="admin :: footer"></div>
+
+</body>
+</html>

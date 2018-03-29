@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Grading APP</title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" th:href="@{/css/menu.css}"/>
-    <link rel="stylesheet" type="text/css" media="all" href="../static/css/footerfont.css" th:href="@{/css/footerfont.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/footerfont.css}"/>
+
 </head>
 
 <body>
@@ -16,7 +16,7 @@
 <div th:replace="admin :: nvbr"></div>
 
 <div class="container">
-    <h2>List of all employers:</h2>
+    <h2>List of all teachers:</h2>
     <p>© ETTI</p>
     <div class="card">
         <div class="card-block">
@@ -28,17 +28,15 @@
                     <th>Last Name</th>
                     <th>Email</th>
                     <th>Phone No.</th>
-                    <th>City</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="employer :${data.content}">
-                    <td th:text="${employer.id}"></td>
-                    <td th:text="${employer.firstName}"></td>
-                    <td th:text="${employer.lastName}"></td>
-                    <td th:text="${employer.email}"></td>
-                    <td th:text="${employer.phoneNo}"></td>
-                    <td th:text="${employer.city}"></td>
+                <tr th:each="teacher :${data.content}">
+                    <td th:text="${teacher.id}"></td>
+                    <td th:text="${teacher.firstName}"></td>
+                    <td th:text="${teacher.lastName}"></td>
+                    <td th:text="${teacher.email}"></td>
+                    <td th:text="${teacher.phoneNo}"></td>
                 </tr>
                 </tbody>
             </table>
