@@ -2,19 +2,59 @@
 .navbar {
     margin-bottom: 0;
     border-radius: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
 }
 
-/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-.row.content {height: 450px}
+/*!* Set height of the grid so .sidenav can be 100% (adjust as needed) *!*/
+/*.row.content {height: 450px}*/
+
+/* ana */
+#main-content {
+    margin-bottom: 60px; /*footer height value */
+    margin-top: 50px;
+
+    position:relative;
+    max-height: 100%;
+    padding-left:0;
+    padding-right:0;
+    background-color: #f1f1f1;
+}
+
+ /* ana */
+#middle-column {
+    height: 100%;
+    position: relative;
+    background-color: white;
+    display: inline-block;
+    margin-left: 200px;
+    padding-top: 34px;
+}
 
 /* Set gray background color and 100% height */
-.sidenav {
+.sidenav-left {
     padding-top: 20px;
     background-color: #f1f1f1;
-    height: 150%;
-    position: sticky;
-
+    /*height: 150%;*/
+    /*position: sticky;*/
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    display: inline-block;
+    left:0;
 }
+
+ /*.sidenav-right {*/
+     /*padding-top: 20px;*/
+     /*background-color: #f1f1f1;*/
+     /*!*height: 150%;*!*/
+     /*!*position: sticky;*!*/
+     /*height: 100%;*/
+     /*position: fixed;*/
+ /*}*/
 
 /* Set black background color, white text and some padding */
 footer {
@@ -24,7 +64,7 @@ footer {
     height:60px;
     background-color: #555;
     color: white;
-    padding: 15px;
+    padding-top: 5px;
 }
 
 /* On small screens, set height to 'auto' for sidenav and grid */
@@ -33,5 +73,9 @@ footer {
         height: auto;
         padding: 15px;
     }
-    .row.content {height:auto;}
+    /*.row.content {height:auto;}*/
+
+    #main-content {
+       margin-top:50px;
+    }
 }

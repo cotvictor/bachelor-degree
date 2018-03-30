@@ -63,8 +63,8 @@ INSERT INTO `credentials`(`username`, `password`,`administrator_id`, `role`) VAL
 INSERT INTO `credentials`(`username`, `password`,`student_id`, `role`) VALUES ('diaconmiron','student',1, 'ROLE_STUDENT');
 INSERT INTO `credentials`(`username`, `password`,`student_id`, `role`) VALUES ('alex.valan','student', 2, 'ROLE_STUDENT');
 INSERT INTO `credentials`(`username`, `password`,`student_id`, `role`) VALUES ('ion.mihalache','student', 3, 'ROLE_STUDENT');
-INSERT INTO `credentials`(`username`, `password`,`student_id`, `role`) VALUES ('george.valentin','student', 4, 'ROLE_STUDENT');
-INSERT INTO `credentials`(`username`, `password`,`student_id`, `role`) VALUES ('andrei.hason','student', 5, 'ROLE_STUDENT');
+INSERT INTO `credentials`(`username`, `password`,`student_id`, `role`) VALUES ('andrei.hason','student', 4, 'ROLE_STUDENT');
+INSERT INTO `credentials`(`username`, `password`,`student_id`, `role`) VALUES ('george.valentin','student', 5, 'ROLE_STUDENT');
 INSERT INTO `credentials`(`username`, `password`,`teacher_id`, `role`) VALUES ('teodor.mihaelescu','teach', 1, 'ROLE_TEACHER');
 INSERT INTO `credentials`(`username`, `password`,`teacher_id`, `role`) VALUES ('vladislav.ionescu','teach', 2, 'ROLE_TEACHER');
 INSERT INTO `credentials`(`username`, `password`,`teacher_id`, `role`) VALUES ('iodocheniu.valus','teach', 3, 'ROLE_TEACHER');
