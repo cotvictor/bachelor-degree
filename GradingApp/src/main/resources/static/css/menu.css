@@ -1,4 +1,5 @@
- /* Remove the navbar's default margin-bottom and rounded borders */
+
+/* Remove the navbar's default margin-bottom and rounded borders */
 .navbar {
     margin-bottom: 0;
     border-radius: 0;
@@ -13,12 +14,15 @@
 /*.row.content {height: 450px}*/
 
 /* ana */
+ #main-wrapper {
+     height:100%;
+     max-height:100%;
+ }
 #main-content {
     margin-bottom: 60px; /*footer height value */
     margin-top: 50px;
-
     position:relative;
-    max-height: 100%;
+    height: 100%;
     padding-left:0;
     padding-right:0;
     background-color: #f1f1f1;
@@ -65,6 +69,27 @@ footer {
     background-color: #555;
     color: white;
     padding-top: 5px;
+}
+
+.users-list {
+    position: absolute;
+    left: -20px;
+       }
+#sign-out {
+    margin-top: 8px;
+}
+
+.active-p {
+    background-color: #e0e0e0;
+}
+
+a:focus, a:hover {
+    text-decoration: none;
+}
+
+.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
+    margin-left: -14px;
+    margin-top: -14px;
 }
 
 /* On small screens, set height to 'auto' for sidenav and grid */

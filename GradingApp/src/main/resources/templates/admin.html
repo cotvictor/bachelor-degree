@@ -12,7 +12,6 @@
 
 </head>
 <body>
-
 <nav class="navbar navbar-inverse" th:fragment="nvbr">
 	<div class="container-fluid">
 		<!-- Brand and toggle get grouped for better mobile display -->
@@ -32,25 +31,23 @@
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="#" th:href="@{/home}" style="move-to: normal">Home <span class="sr-only">(current)</span></a></li>
+				<li class="active"><a href="#" th:href="@{/admin}" style="move-to: normal">Home <span class="sr-only">(current)</span></a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Main menu<span class="caret"></span></a>
+				<li class="dropdown users-list">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Users List<span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="#" th:href="@{/yearsList}">First Year</a></li>
-						<li><a href="#">Second Year</a></li>
-						<li><a href="#">Third Year</a></li>
-						<li><a href="#">Fourth Year</a></li>
+						<li>Users:</li>
 						<li role="separator" class="divider"></li>
 						<li><a href="#" th:href="@{/teacherHome/employersList}">Employers List</a></li>
 						<li><a href="#" th:href="@{/teacherHome/studentsList}">Students List</a></li>
 						<li><a href="#" th:href="@{/teacherHome/teachersList}">Teachers List</a></li>
 					</ul>
 				</li>
-				<form th:action="@{/logout}" method="post">
-					<input class="btn btn-outline-danger" type="submit" value="Sign Out" />
-				</form>
+				<li id="sign-out">
+					<form th:action="@{/logout}" method="post">
+					<input class="btn btn-danger" type="submit" value="Sign Out" />
+				</form></li>
 			</ul>
 		</div>
 	</div>

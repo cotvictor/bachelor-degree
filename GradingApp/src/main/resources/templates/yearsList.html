@@ -10,40 +10,209 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/menu.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/css/footerfont.css}"/>
     <script type="text/javascript" src="jquery-1.8.3.js"></script>
+    <!--<script type="text/javascript">-->
+        <!--var $courses = $('#courses');-->
+        <!--$(function (){-->
+            <!--$.ajax({-->
+                <!--type: 'GET',-->
+                <!--url: "http://localhost:9090/api/courses/allCourses",-->
+                <!--succsess: function(courses){-->
+                   <!--$.each(course, function(i, course){-->
+                       <!--$courses.append('<li>my course</li>');-->
+                   <!--});-->
+                <!--}-->
+            <!--});-->
+        <!--});-->
+    <!--</script>-->
+    <!--<script th:inline="javascript">-->
     <script type="text/javascript">
-        var $courses = $('#courses');
-        $(function (){
+
+        const allCourses = localStorage.allCourses
+            ? JSON.parse(localStorage.allCourses)
+            : "";
+        const allSeries = localStorage.allSeries
+            ? JSON.parse(localStorage.allSeries)
+            : "";
+        const allStudents = localStorage.allStudents
+            ? JSON.parse(localStorage.allStudents)
+            : "";
+
+        allCourses[0].seriesCourses[1].id = 2;
+
+        if (!allCourses || !allSeries || !allStudents) {
             $.ajax({
-                type: 'GET',
-                url: "http://localhost:9090/api/courses/allCourses",
-                succsess: function(courses){
-                   $.each(course, function(i, course){
-                       $courses.append('<li>my course</li>');
-                   });
+                url: "studentCourses/allStudentCourses",
+                success: function(result) {
+                    parsedResult = JSON.stringify(result);
+                    localStorage.setItem("allCourses", parsedResult);
                 }
             });
-        });
-    </script>
+            $.ajax({
+                url: "https://api.myjson.com/bins/1clv1z",
+                success: function(result) {
+                    parsedResult = JSON.stringify(result);
+                    localStorage.setItem("allSeries", parsedResult);
+                }
+            });
+            $.ajax({
+                url: "https://api.myjson.com/bins/1ee5vb",
+                success: function(result) {
+                    parsedResult = JSON.stringify(result);
+                    localStorage.setItem("allStudents", parsedResult);
+                }
+            });
+        }
+        //<![CDATA[
+        insertCourses = function(courses) {
+            document.querySelector("table").innerHTML = `
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Year of study</th>
+            <th>Teacher Name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+`;
+            courses.forEach((course, index) => {
+                document.querySelector("tbody").innerHTML += `
+            <tr id="${index}" class="table-body">
+                <td>${course.title}</td>
+                <td>${course.description}</td>
+                <td>${course.yearOfStudy}</td>
+                <td>${course.teachers[0].firstName} ${
+                    course.teachers[0].lastName
+                    }</td>
+                <td>${course.teachers[0].email}</td>
+                <td>${course.teachers[0].phoneNo}</td>
+            </tr>
+        `;
+            });
+            setUpEventListeners();
+        };
 
+        insertSeries = function(series) {
+            document.querySelector("table").innerHTML = `
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Specialisation</th>
+            <th>Year of study</th>
+            <th>Number of groups</th>
+        </tr>
+    </thead>
+`;
+            series.forEach(serie => {
+                document.querySelector("table").innerHTML += `
+        <tbody>
+            <tr>
+                <td>${serie.name}</td>
+                <td>${serie.specialization}</td>
+                <td>${serie.yearOfStudy}</td>
+                <td>${serie.grups.length}</td>
+            </tr>
+        </tbody>
+        `;
+            });
+        };
+
+        insertGroups = function(groups) {
+            document.querySelector("table").innerHTML = `
+    <thead>
+        <tr>
+            <th>Group Id</th>
+            <th>Group</th>
+            <th>Year of study</th>
+        </tr>
+    </thead>
+`;
+            groups.forEach(group => {
+                document.querySelector("table").innerHTML += `
+        <tbody>
+            <tr>
+                <td>${group.id}</td>
+                <td>${group.name}</td>
+                <td>${group.domain}</td>
+            </tr>
+        </tbody>
+        `;
+            });
+        };
+
+        insertStudents = function(students) {
+            document.querySelector("table").innerHTML = `
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Group</th>
+            <th>Scholarship</th>
+            <th>Phone</th>
+        </tr>
+    </thead>
+`;
+            students.forEach(student => {
+                document.querySelector("table").innerHTML += `
+        <tbody>
+            <tr>
+                <td>${student.lastName} ${student.firstName}</td>
+                <td>${student.grup.name} ${student.grup.domain}</td>
+                <td>${student.scholarship}</td>
+                <td>${student.phoneNo}</td>
+            </tr>
+        </tbody>
+        `;
+            });
+        };
+
+        setUpEventListeners = function() {
+            rows = document.querySelectorAll("tbody tr");
+            rows.forEach(item => item.addEventListener("click", handleClick));
+        };
+
+        handleClick = function() {
+            selectedCourse = allCourses.filter(course => course.id - 1 == this.id);
+            renderSelectedCoursesSeries(selectedCourse);
+        };
+
+        renderSelectedCoursesSeries = function(course) {
+            seriesOfCourse = [];
+            course[0].seriesCourses.forEach(seriesCourseId => {
+                seriesOfCourse = [
+                    ...seriesOfCourse,
+                    allSeries.filter(serie => serie.id == seriesCourseId.id)
+                ];
+                // if (seriesOfCourse2) seriesOfCourse = [...seriesOfCourse, seriesOfCourse2];
+            });
+            for (i = 0; i < seriesOfCourse.length; i++) {
+                seriesOfCourse[i] = seriesOfCourse[i][0];
+            }
+            insertSeries(seriesOfCourse);
+        };
+
+        //]]>
+    </script>
 </head>
 <body>
 
 <div th:replace="admin :: nvbr"></div>
 
-<div class="container-fluid text-center">
-    <div class="row content">
+<!--<div id="main-content" class="container-fluid text-center">-->
+    <!--<div class="row content">-->
 
-        <div class="col-sm-8 text-left">
-            <h1>List of all years in ETTI Faculty:</h1>
-            <h3>First Year</h3>
-            <li><a href="#" th:href="@{/teacherHome/coursesByYear1}"> Tap for first year.</a> </li>
-            <li><a href="#" th:href="@{/teacherHome/employersList}">Second Year</a></li>
-            <h3>Third Year</h3>
-            <h3>Fourth Year</h3>
-        </div>
+        <!--<div class="col-sm-8 text-left">-->
+            <!--<h1>List of all years in ETTI Faculty:</h1>-->
+            <!--<h3>First Year</h3>-->
+            <!--<li><a href="#" th:href="@{/teacherHome/coursesByYear1}"> Tap for first year.</a> </li>-->
+            <!--<li><a href="#" th:href="@{/teacherHome/employersList}">Second Year</a></li>-->
+            <!--<h3>Third Year</h3>-->
+            <!--<h3>Fourth Year</h3>-->
+        <!--</div>-->
 
-    </div>
-</div>
+    <!--</div>-->
+<!--</div>-->
 
 <div th:replace="admin :: footer"></div>
 

@@ -5,10 +5,11 @@
 }
 
 ul.social {
-    list-style-type: square;
-    color : #000000;
+    color : #bfbfbf;
     font-size : 12px;
     margin:0;
+    text-align: left;
+    list-style: none;
 }
 
 h3 {
@@ -16,7 +17,7 @@ h3 {
     font-family: 'Source Sans Pro', sans-serif;
     font-weight : 300;
     font-size : 14px;
-    color : #000;
+    color : #9b9b9b;
 
 }
 
