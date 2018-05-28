@@ -265,6 +265,8 @@ INSERT INTO `student_course`(`course_id`, `student_id`, `student_grade`, `teache
 INSERT INTO `student_course`(`course_id`, `student_id`, `student_grade`, `teacher_grade`) VALUES (3,5, 6, 8);
 INSERT INTO `student_course`(`course_id`, `student_id`, `student_grade`, `teacher_grade`) VALUES (3,4, 10, 10);
 INSERT INTO `student_course`(`course_id`, `student_id`, `student_grade`, `teacher_grade`) VALUES (3,5, 9, 8);
+INSERT INTO `student_course`(`course_id`, `student_id`, `student_grade`, `teacher_grade`) VALUES (4,5, 9, 8);
+INSERT INTO `student_course`(`course_id`, `student_id`, `student_grade`, `teacher_grade`) VALUES (5,4, 9, 8);
 INSERT INTO `student_course`(`course_id`, `student_id`, `student_grade`, `teacher_grade`) VALUES (2,2, 7, 8);
 INSERT INTO `student_course`(`course_id`, `student_id`, `student_grade`, `teacher_grade`) VALUES (1,5, 10, 8);
 ---
@@ -290,6 +292,29 @@ INSERT INTO `student_course`(`course_id`, `student_id`, `student_grade`, `teache
 INSERT INTO `student_course`(`course_id`, `student_id`, `student_grade`, `teacher_grade`) VALUES (9,15, 9, 8);
 INSERT INTO `student_course`(`course_id`, `student_id`, `student_grade`, `teacher_grade`) VALUES (9,29, 7, 8);
 INSERT INTO `student_course`(`course_id`, `student_id`, `student_grade`, `teacher_grade`) VALUES (9,35, 10, 8);
+-----
+
+INSERT INTO `student_course`(`course_id`, `student_id`, `student_grade`, `teacher_grade`) VALUES (9,35, 10, 8);
+INSERT INTO `student_course`(`course_id`, `student_id`, `student_grade`, `teacher_grade`) VALUES (10,35, 10, 8);
+INSERT INTO `student_course`(`course_id`, `student_id`, `student_grade`, `teacher_grade`) VALUES (11,35, 10, 8);
+INSERT INTO `student_course`(`course_id`, `student_id`, `student_grade`, `teacher_grade`) VALUES (12,35, 10, 8);
+INSERT INTO `student_course`(`course_id`, `student_id`, `student_grade`, `teacher_grade`) VALUES (13,35, 10, 8);
+INSERT INTO `student_course`(`course_id`, `student_id`, `student_grade`, `teacher_grade`) VALUES (14,35, 10, 8);
+INSERT INTO `student_course`(`course_id`, `student_id`, `student_grade`, `teacher_grade`) VALUES (15,35, 10, 8);
+INSERT INTO `student_course`(`course_id`, `student_id`, `student_grade`, `teacher_grade`) VALUES (16,35, 10, 8);
+INSERT INTO `student_course`(`course_id`, `student_id`, `student_grade`, `teacher_grade`) VALUES (17,35, 10, 8);
+INSERT INTO `student_course`(`course_id`, `student_id`, `student_grade`, `teacher_grade`) VALUES (18,35, 10, 8);
+INSERT INTO `student_course`(`course_id`, `student_id`, `student_grade`, `teacher_grade`) VALUES (19,35, 10, 8);
+INSERT INTO `student_course`(`course_id`, `student_id`, `student_grade`, `teacher_grade`) VALUES (20,35, 10, 8);
+INSERT INTO `student_course`(`course_id`, `student_id`, `student_grade`, `teacher_grade`) VALUES (21,35, 10, 8);
+INSERT INTO `student_course`(`course_id`, `student_id`, `student_grade`, `teacher_grade`) VALUES (22,35, 10, 8);
+INSERT INTO `student_course`(`course_id`, `student_id`, `student_grade`, `teacher_grade`) VALUES (23,35, 10, 8);
+INSERT INTO `student_course`(`course_id`, `student_id`, `student_grade`, `teacher_grade`) VALUES (24,35, 10, 8);
+INSERT INTO `student_course`(`course_id`, `student_id`, `student_grade`, `teacher_grade`) VALUES (25,35, 10, 8);
+INSERT INTO `student_course`(`course_id`, `student_id`, `student_grade`, `teacher_grade`) VALUES (26,35, 10, 8);
+INSERT INTO `student_course`(`course_id`, `student_id`, `student_grade`, `teacher_grade`) VALUES (27,35, 10, 8);
+INSERT INTO `student_course`(`course_id`, `student_id`, `student_grade`, `teacher_grade`) VALUES (28,35, 10, 8);
+
 
 
 -- course_teacher
@@ -298,8 +323,6 @@ INSERT INTO `course_teacher`(`course_id`, `teacher_id`) VALUES (2,2);
 INSERT INTO `course_teacher`(`course_id`, `teacher_id`) VALUES (3,3);
 INSERT INTO `course_teacher`(`course_id`, `teacher_id`) VALUES (4,4);
 INSERT INTO `course_teacher`(`course_id`, `teacher_id`) VALUES (5,5);
-
----
 INSERT INTO `course_teacher`(`course_id`, `teacher_id`) VALUES (6,1);
 INSERT INTO `course_teacher`(`course_id`, `teacher_id`) VALUES (7,2);
 INSERT INTO `course_teacher`(`course_id`, `teacher_id`) VALUES (8,3);
@@ -314,7 +337,15 @@ INSERT INTO `course_teacher`(`course_id`, `teacher_id`) VALUES (16,9);
 INSERT INTO `course_teacher`(`course_id`, `teacher_id`) VALUES (17,2);
 INSERT INTO `course_teacher`(`course_id`, `teacher_id`) VALUES (18,8);
 INSERT INTO `course_teacher`(`course_id`, `teacher_id`) VALUES (19,6);
-INSERT INTO `course_teacher`(`course_id`, `teacher_id`) VALUES (20,7);
+INSERT INTO `course_teacher`(`course_id`, `teacher_id`) VALUES (20,2);
+INSERT INTO `course_teacher`(`course_id`, `teacher_id`) VALUES (21,3);
+INSERT INTO `course_teacher`(`course_id`, `teacher_id`) VALUES (22,4);
+INSERT INTO `course_teacher`(`course_id`, `teacher_id`) VALUES (23,5);
+INSERT INTO `course_teacher`(`course_id`, `teacher_id`) VALUES (24,6);
+INSERT INTO `course_teacher`(`course_id`, `teacher_id`) VALUES (25,7);
+INSERT INTO `course_teacher`(`course_id`, `teacher_id`) VALUES (26,8);
+INSERT INTO `course_teacher`(`course_id`, `teacher_id`) VALUES (27,9);
+INSERT INTO `course_teacher`(`course_id`, `teacher_id`) VALUES (28,10);
 
 -- series_course
 INSERT INTO `series_course`(`series_id`, `course_id`) VALUES (1,1);
@@ -406,5 +437,40 @@ INSERT INTO `series_course`(`series_id`, `course_id`) VALUES (6,12);
 INSERT INTO `series_course`(`series_id`, `course_id`) VALUES (6,13);
 INSERT INTO `series_course`(`series_id`, `course_id`) VALUES (6,14);
 INSERT INTO `series_course`(`series_id`, `course_id`) VALUES (6,15);
+INSERT INTO `series_course`(`series_id`, `course_id`) VALUES (6,15);
 --
 INSERT INTO `series_course`(`series_id`, `course_id`) VALUES (7,17);
+INSERT INTO `series_course`(`series_id`, `course_id`) VALUES (8,18);
+INSERT INTO `series_course`(`series_id`, `course_id`) VALUES (8,19);
+INSERT INTO `series_course`(`series_id`, `course_id`) VALUES (8,20);
+INSERT INTO `series_course`(`series_id`, `course_id`) VALUES (8,21);
+INSERT INTO `series_course`(`series_id`, `course_id`) VALUES (8,22);
+INSERT INTO `series_course`(`series_id`, `course_id`) VALUES (9,19);
+INSERT INTO `series_course`(`series_id`, `course_id`) VALUES (9,24);
+INSERT INTO `series_course`(`series_id`, `course_id`) VALUES (9,25);
+INSERT INTO `series_course`(`series_id`, `course_id`) VALUES (9,26);
+INSERT INTO `series_course`(`series_id`, `course_id`) VALUES (9,27);
+INSERT INTO `series_course`(`series_id`, `course_id`) VALUES (9,28);
+INSERT INTO `series_course`(`series_id`, `course_id`) VALUES (9,22);
+INSERT INTO `series_course`(`series_id`, `course_id`) VALUES (9,19);
+INSERT INTO `series_course`(`series_id`, `course_id`) VALUES (10,20);
+INSERT INTO `series_course`(`series_id`, `course_id`) VALUES (10,21);
+INSERT INTO `series_course`(`series_id`, `course_id`) VALUES (10,22);
+INSERT INTO `series_course`(`series_id`, `course_id`) VALUES (10,23);
+INSERT INTO `series_course`(`series_id`, `course_id`) VALUES (10,24);
+INSERT INTO `series_course`(`series_id`, `course_id`) VALUES (10,25);
+INSERT INTO `series_course`(`series_id`, `course_id`) VALUES (10,26);
+INSERT INTO `series_course`(`series_id`, `course_id`) VALUES (10,27);
+INSERT INTO `series_course`(`series_id`, `course_id`) VALUES (10,28);
+INSERT INTO `series_course`(`series_id`, `course_id`) VALUES (10,19);
+INSERT INTO `series_course`(`series_id`, `course_id`) VALUES (11,21);
+INSERT INTO `series_course`(`series_id`, `course_id`) VALUES (11,22);
+INSERT INTO `series_course`(`series_id`, `course_id`) VALUES (11,23);
+INSERT INTO `series_course`(`series_id`, `course_id`) VALUES (11,24);
+INSERT INTO `series_course`(`series_id`, `course_id`) VALUES (11,25);
+INSERT INTO `series_course`(`series_id`, `course_id`) VALUES (12,26);
+INSERT INTO `series_course`(`series_id`, `course_id`) VALUES (12,16);
+INSERT INTO `series_course`(`series_id`, `course_id`) VALUES (12,17);
+INSERT INTO `series_course`(`series_id`, `course_id`) VALUES (12,18);
+INSERT INTO `series_course`(`series_id`, `course_id`) VALUES (12,19);
+INSERT INTO `series_course`(`series_id`, `course_id`) VALUES (12,20);
