@@ -1,0 +1,30 @@
+.navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+}
+
+#footer {
+    max-width: 980px;
+    text-align: center;
+    margin: auto;
+}
+ul.social {
+    color : #bfbfbf;
+    font-size : 12px;
+    margin:0;
+    text-align: left;
+    list-style: none;
+}
+
+.copyright {
+    float: right;
+}
+
+.social {
+    float: left;
+}
