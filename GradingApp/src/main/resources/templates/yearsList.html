@@ -3,7 +3,7 @@
 <head>
     <style>
         body  {
-            background-image: url("../images/rsz_1upb_edit.jpg");
+            background-image: url("../images/overlayUPB.jpg");
             background-color: #cccccc;
             background-size: cover;
         }
@@ -237,6 +237,11 @@
     `;
         }
         // ]]>
+        var x = document.getElementsByTagName("BODY")[0];
+
+        setTimeout(function(){
+            document.body.style.backgroundImage = "none";
+        }, 7000);
     </script>
 
     <title>Moodle Tables</title>
