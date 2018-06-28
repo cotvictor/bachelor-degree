@@ -1,80 +1,76 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Grading APP</title>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <style>
+        body  {
+            background-image: url("../images/rsz_1upb_edit.jpg");
+            background-color: #cccccc;
+            background-size: cover;
+        }
+    </style>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/footerfont.css}"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <!--<link rel="stylesheet" type="text/css" th:href="@{/css/menu.css}"/>-->
     <link rel="stylesheet" type="text/css" th:href="@{/css/menu.css}"/>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/footerfont.css}"/>
-    <script type="text/javascript"></script>
-
-</head>
-<body>
-
-<div th:replace="admin :: nvbr"></div>
-
-<div class="grades">
-<table class="table" id='woork'></table>
-
-<button class="btn btn-success" onclick="insertCourses(allCourses)">Insert Cursuri</button>
-<button class="btn btn-success" onclick="test()">test</button>
-<button class="btn btn-success" onclick="insertSeries(allSeries)">Insert Serii</button>
-<button class="btn btn-success" onclick="insertGroups(allSeries[0].grups)">Insert Grupe</button>
-<button class="btn btn-success" onclick="insertStudents(allStudents)">Insert Studenti</button>
-<button class="btn btn-success" onclick="radu()">Radu</button>
-</div>
-
-<div th:replace="admin :: footer"></div>
-
-</body>
-</html>
-
-
-<script type="text/javascript">
-    // <![CDATA[
-    function test() {
-        alert('test is ok');
-    }
-    const allCourses = localStorage.allCourses
-        ? JSON.parse(localStorage.allCourses)
-        : "";
-    const allSeries = localStorage.allSeries
-        ? JSON.parse(localStorage.allSeries)
-        : "";
-    const allStudents = localStorage.allStudents
-        ? JSON.parse(localStorage.allStudents)
-        : "";
-
-    if (!allCourses || !allSeries || !allStudents) {
+    <script type="text/javascript">
+        // <![CDATA[
         $.ajax({
-            url: "https://api.myjson.com/bins/o7393",
-            success: function(result) {
-                parsedResult = JSON.stringify(result);
-                localStorage.setItem("allCourses", parsedResult);
-            }
-        });
-        $.ajax({
-            url: "https://api.myjson.com/bins/1clv1z",
-            success: function(result) {
-                parsedResult = JSON.stringify(result);
-                localStorage.setItem("allSeries", parsedResult);
-            }
-        });
-        $.ajax({
-            url: "https://api.myjson.com/bins/1ee5vb",
+            url: "http://localhost:9090/api/students/allStudents",
             success: function(result) {
                 parsedResult = JSON.stringify(result);
                 localStorage.setItem("allStudents", parsedResult);
+                $.ajax({
+                    url: "https://api.myjson.com/bins/uus72",
+                    success: function(result) {
+                        years = result;
+
+                        //Add empty groups
+
+                        years.third.forEach(course => {
+                            course.series.forEach( serie => {
+                                var first = serie.name;
+                                serie.groups = {};
+                                // serie.groups[431+serie.name]={};
+                            });
+                        });
+
+                        //Add students
+                        years.third.forEach(course => {
+                            course.series.forEach( serie => {
+                                var first = serie.name;
+                                var allStudents = JSON.parse(localStorage.allStudents);
+                                serie.groups[431+serie.name] = allStudents.filter(student => student.grup.name == 431);
+                                serie.groups[432+serie.name] = allStudents.filter(student => student.grup.name == 432);
+                                serie.groups[433+serie.name] = allStudents.filter(student => student.grup.name == 433);
+                                serie.groups[434+serie.name] = allStudents.filter(student => student.grup.name == 434);
+                            });
+                        });
+
+                        parsedResult = JSON.stringify(years);
+                        localStorage.setItem("years", parsedResult);
+                        document.querySelector('.table-container').innerHTML = `
+                <table class="table" id='woork'></table>
+
+                <div class="buttons-list">
+                <button type="button" class="btn btn-primary btn-lg btn-block">Anul 1</button>
+                <button type="button" class="btn btn-primary btn-lg btn-block">Anul 2</button>
+                <button type="button" class="btn btn-primary btn-lg btn-block" onclick="insertCourses(years.third)">Anul 3</button>
+                <button type="button" class="btn btn-primary btn-lg btn-block" onclick="insertCourses(years.fourth)">Anul 4</button>
+                </div>
+                `;
+                    }
+                });
             }
         });
-    }
 
-    function insertCourses(courses) {
-        document.querySelector("table").innerHTML = `
+        insertCourses = function(courses){
+            document.querySelector(".buttons-list").innerHTML = '';
+            document.querySelector("table").innerHTML = `
     <thead>
         <tr>
             <th>Title</th>
@@ -87,26 +83,36 @@
     </thead>
     <tbody></tbody>
 `;
-
-        courses.forEach((course, index) => {
-            document.querySelector("tbody").innerHTML += `
+            courses.forEach((course, index) => {
+                document.querySelector("tbody").innerHTML += `
             <tr id="${index}" class="table-body">
                 <td>${course.title}</td>
                 <td>${course.description}</td>
                 <td>${course.yearOfStudy}</td>
                 <td>${course.teachers[0].firstName} ${
-                course.teachers[0].lastName
-                }</td>
+                    course.teachers[0].lastName
+                    }</td>
                 <td>${course.teachers[0].email}</td>
                 <td>${course.teachers[0].phoneNo}</td>
             </tr>
         `;
-        });
-        setUpEventListeners();
-    };
+            });
+            setUpEventListenersCourses(courses);
+        };
 
-    function insertSeries(series) {
-        document.querySelector("table").innerHTML = `
+        setUpEventListenersCourses = function(courses) {
+            rows = document.querySelectorAll("tbody tr");
+            localStorage.setItem('courses',JSON.stringify(courses));
+            rows.forEach(item => item.addEventListener("click", handleClickCourses));
+        };
+
+        handleClickCourses = function(){
+            courses = JSON.parse(localStorage.getItem('courses'));
+            insertSeries(courses[this.id].series);
+        };
+
+        insertSeries = function(series){
+            document.querySelector("table").innerHTML = `
     <thead>
         <tr>
             <th>Name</th>
@@ -116,10 +122,11 @@
         </tr>
     </thead>
 `;
-        series.forEach(serie => {
-            document.querySelector("table").innerHTML += `
+            console.log(series);
+            series.forEach((serie, index) => {
+                document.querySelector("table").innerHTML += `
         <tbody>
-            <tr>
+            <tr id="${index}">
                 <td>${serie.name}</td>
                 <td>${serie.specialization}</td>
                 <td>${serie.yearOfStudy}</td>
@@ -127,80 +134,135 @@
             </tr>
         </tbody>
         `;
-        });
-    };
+            });
+            setUpEventListenersSeries(series);
+        };
 
-    function insertGroups(groups) {
-        document.querySelector("table").innerHTML = `
+        setUpEventListenersSeries = function(series){
+            rows = document.querySelectorAll("tbody tr");
+            localStorage.setItem('series',JSON.stringify(series));
+            rows.forEach(item => item.addEventListener("click", handleClickSeries));
+        };
+
+        handleClickSeries = function(){
+            series = JSON.parse(localStorage.getItem('series'));
+            console.log(series[this.id].groups);
+            insertGroups(series[this.id]);
+        };
+
+        insertGroups = function(serie){
+            document.querySelector("table").innerHTML = `
     <thead>
         <tr>
-            <th>Group Id</th>
             <th>Group</th>
             <th>Year of study</th>
         </tr>
     </thead>
 `;
-        groups.forEach(group => {
-            document.querySelector("table").innerHTML += `
+            groups = serie.groups;
+            for(index=0;index<4;index++){
+                document.querySelector("table").innerHTML += `
         <tbody>
-            <tr>
-                <td>${group.id}</td>
-                <td>${group.name}</td>
-                <td>${group.domain}</td>
+            <tr id="${index}">
+                <td>${Object.keys(groups)[index]}</td>
+                <td>3</td>
             </tr>
         </tbody>
         `;
-        });
-    };
+            }
+            setUpEventListenersGroups(groups);
+        };
 
-    function insertStudents(students) {
-        document.querySelector("table").innerHTML = `
+        setUpEventListenersGroups = function(groups){
+            rows = document.querySelectorAll("tbody tr");
+            localStorage.setItem('groups',JSON.stringify(groups));
+            rows.forEach(item => item.addEventListener("click", handleClickGroups));
+        };
+
+        handleClickGroups = function(){
+            groups = JSON.parse(localStorage.getItem('groups'));
+            console.log(groups[Object.keys(groups)[this.id]]);
+            insertStudents(groups[Object.keys(groups)[this.id]]);
+        };
+
+        insertStudents = function(students){
+            document.querySelector("table").innerHTML = `
     <thead>
         <tr>
             <th>Name</th>
-            <th>Group</th>
             <th>Scholarship</th>
             <th>Phone</th>
+            <th>Student Grade</th>
+            <th>Teacher Grade</th>
         </tr>
     </thead>
 `;
-        students.forEach(student => {
-            document.querySelector("table").innerHTML += `
+            students.forEach((student, index) => {
+                if(!student.teacherGrade){student.teacherGrade = Math.floor(Math.random() * 11);
+                    if(student.teacherGrade>5) student.studentGrade = student.teacherGrade - Math.floor(Math.random() * 3);
+                    else student.studentGrade = student.teacherGrade + Math.floor(Math.random() * 3);}
+                document.querySelector("table").innerHTML += `
         <tbody>
             <tr>
                 <td>${student.lastName} ${student.firstName}</td>
-                <td>${student.grup.name} ${student.grup.domain}</td>
                 <td>${student.scholarship}</td>
                 <td>${student.phoneNo}</td>
+				<td>
+				<input onMouseOver="this.style.transform='scale(1.1)'"
+                onMouseOut="this.style.transform='scale(1)'" style="border:none; outline:none; width:50px;" type="number"
+                value="${student.studentGrade}"/>
+				</td>
+				<td>
+				<input onMouseOver="this.style.transform='scale(1.1)'"
+                onMouseOut="this.style.transform='scale(1)'" style="border:none; outline:none; width:50px;" type="number"
+                value="${student.teacherGrade}"/>
+				</td>
             </tr>
         </tbody>
         `;
-        });
-    };
+            });
+        };
 
-     function setUpEventListeners() {
-        rows = document.querySelectorAll("tbody tr");
-        rows.forEach(item => item.addEventListener("click", handleClick));
-    };
 
-     function handleClick() {
-        selectedCourse = allCourses.filter(course => course.id - 1 == this.id);
-        renderSelectedCoursesSeries(selectedCourse);
-    };
+        backToYears = function(){
+            document.querySelector('.table-container').innerHTML = `
+    <table class="table" id='woork'></table>
 
-     function renderSelectedCoursesSeries(course) {
-        seriesOfCourse = [];
-        course[0].seriesCourses.forEach(seriesCourseId => {
-            seriesOfCourse = [
-                ...seriesOfCourse,
-                allSeries.filter(serie => serie.id == seriesCourseId.id)
-            ];
-            // if (seriesOfCourse2) seriesOfCourse = [...seriesOfCourse, seriesOfCourse2];
-        });
-        for (i = 0; i < seriesOfCourse.length; i++) {
-            seriesOfCourse[i] = seriesOfCourse[i][0];
+    <div class="buttons-list">
+        <button class="btn btn-success">Anul 1</button>
+        <button class="btn btn-success">Anul 2</button>
+        <button class="btn btn-success" onclick="insertCourses(years.third)">Anul 3</button>
+        <button class="btn btn-success" onclick="insertCourses(years.fourth)">Anul 4</button>
+    </div>
+    `;
         }
-        insertSeries(seriesOfCourse);
-    };
-    // ]]>
-</script>
+        // ]]>
+    </script>
+
+    <title>Moodle Tables</title>
+
+    <style>
+        table td:hover {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+<div class="table-container"></div>
+
+<footer class="container-fluid text-center" th:fragment="footer">
+    <div id="footer">
+        <ul class="social">
+            <li>Address: Bd. Iuliu Maniu 1-3, Sector 6, Bucureşti</li>
+            <li>E-mail : etti@electronica.pub.ro</li>
+            <li>Telefon: 022 45 912 249</li>
+        </ul>
+        <h3 class="copyright">© 2018 Made by Victor Cotoman </h3>
+        <div style="clear: both"></div>
+    </div>
+</footer>
+</body>
+
+</html>
+

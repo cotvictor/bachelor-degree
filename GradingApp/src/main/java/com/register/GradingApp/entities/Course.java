@@ -1,7 +1,5 @@
 package com.register.GradingApp.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -24,14 +22,6 @@ public class Course {
 
     @Column(name = "year_of_study")
     private int yearOfStudy;
-//
-//    @ManyToMany(cascade = { CascadeType.ALL })
-//    @JoinTable(
-//            name = "course_student",
-//            joinColumns = { @JoinColumn(name = "course_id", referencedColumnName = "id") },
-//            inverseJoinColumns = { @JoinColumn(name = "student_id", referencedColumnName = "id") }
-//    )
-//    Set<Student> students = new HashSet<>();
 
     @ManyToMany(cascade = { CascadeType.ALL })
     @JoinTable(
@@ -48,10 +38,6 @@ public class Course {
     private Set<SeriesCourse> seriesCourses;
 
 
-//    @JsonIgnore
-//    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    private Set<TeacherCourse> teacherCourses;
-
     public Set<SeriesCourse> getSeriesCourses() {
         return seriesCourses;
     }
@@ -67,10 +53,8 @@ public class Course {
     public Course(String title, String description, int yearOfStudy, /*Set<Student> students,*/
                   Set<Teacher> teachers, Set<StudentCourse> studentCourses, Set<SeriesCourse> seriesCourses /*, Set<TeacherCourse> teacherCourses*/) {
         this.title = title;
-//        this.teacherCourses = teacherCourses;
         this.description = description;
         this.yearOfStudy = yearOfStudy;
-//        this.students = students;
         this.teachers = teachers;
         this.studentCourses = studentCourses;
         this.seriesCourses = seriesCourses;
@@ -107,22 +91,6 @@ public class Course {
     public void setYearOfStudy(int yearOfStudy) {
         this.yearOfStudy = yearOfStudy;
     }
-//
-//    public Set<Student> getStudents() {
-//        return students;
-//    }
-//
-//    public void setStudents(Set<Student> students) {
-//        this.students = students;
-//    }
-//
-//    public Set<TeacherCourse> getTeacherCourses() {
-//        return teacherCourses;
-//    }
-//
-//    public void setTeacherCourses(Set<TeacherCourse> teacherCourses) {
-//        this.teacherCourses = teacherCourses;
-//    }
 
     public Set<Teacher> getTeachers() {
         return teachers;

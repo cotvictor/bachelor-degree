@@ -32,10 +32,6 @@ public class Teacher implements Serializable {
     @OneToOne(mappedBy = "teacher", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Credentials credentials;
 
-//    @JsonIgnore
-//    @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    private Set<TeacherCourse> teacherCourses;
-
     @JsonIgnore
     @ManyToMany(mappedBy = "teachers")
     private Set<Course> courses = new HashSet<>();
@@ -62,14 +58,6 @@ public class Teacher implements Serializable {
     public void setPhoneNo(int phoneNo) {
         this.phoneNo = phoneNo;
     }
-
-//    public Set<TeacherCourse> getTeacherCourses() {
-//        return teacherCourses;
-//    }
-//
-//    public void setTeacherCourses(Set<TeacherCourse> teacherCourses) {
-//        this.teacherCourses = teacherCourses;
-//    }
 
     public int getId() {
         return id;

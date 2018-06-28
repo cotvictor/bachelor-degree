@@ -37,9 +37,6 @@ public class Student implements Serializable{
 
     @OneToOne(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Credentials credentials;
-//
-//    @ManyToMany(mappedBy = "students")
-//    private Set<Course> courses = new HashSet<>();
 
     @JsonIgnore
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -59,7 +56,6 @@ public class Student implements Serializable{
         this.phoneNo = phoneNo;
         this.grup = grup;
         this.credentials = credentials;
-//        this.courses = courses;
     }
 
     public int getPhoneNo() {
@@ -133,14 +129,7 @@ public class Student implements Serializable{
     public void setScholarship(boolean scholarship) {
         this.scholarship = scholarship;
     }
-//
-//    public Set<Course> getCourses() {
-//        return courses;
-//    }
-//
-//    public void setCourses(Set<Course> courses) {
-//        this.courses = courses;
-//    }
+
 
 
     @Override
